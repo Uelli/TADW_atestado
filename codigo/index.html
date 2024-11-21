@@ -5,106 +5,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <body>
-  <h2>Cadastro</h2>
-  <form id="form" action="gravar.php" method="POST">
-
-
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required />
-
-
-
-    <label for="endereco">Endereço:</label>
-    <input type="text" id="endereco" name="endereco" placeholder="Digite o endereço completo" required />
-
-
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="exemplo@gmail.com" required />
-
-
-
-    <label for="telefone">Telefone:</label>
-    <input type="text" id="telefone" name="telefone" maxlength="14" placeholder="(00)00000-0000" required />
-
-
-
-    <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" name="cpf" maxlength="14" placeholder="000.000.000-00" required />
-
-    <input type="submit" value="Cadastrar" class="btn btn-primary" />
-
-  </form>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Cadastro</h2>
+        <form id="form" action="gravar.php" method="POST" onsubmit="return validarFormulario()">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" name="nome" class="form-control" />
+            <span id="nomeError" class="text-danger"></span>
+          </div>
+          <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" class="form-control" />
+            <span id="enderecoError" class="text-danger"></span>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" />
+            <span id="emailError" class="text-danger"></span>
+          </div>
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" class="form-control" maxlength="14" />
+            <span id="telefoneError" class="text-danger"></span>
+          </div>
+          <div class="mb-3">
+            <label for="cpf" class="form-label">CPF:</label>
+            <input type="text" id="cpf" name="cpf" class="form-control" maxlength="14" />
+            <span id="cpfError" class="text-danger"></span>
+          </div>
+          <div class="d-grid">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("form");
-
-      form.addEventListener("submit", function (event) {
-        let isValid = true;
-
-        // Limpa mensagens de erro
-        const errorMessages = document.querySelectorAll(".error");
-        errorMessages.forEach(function (msg) {
-          msg.remove();
-        });
-
-        // Valida o campo nome
+    function validarFormulario() {
+        let valid = true;
+    
+        // Pegando os elementos do formulário
         const nome = document.getElementById("nome");
-        if (nome.value.trim().length < 6) {
-          isValid = false;
-          showError(nome, "O nome deve ter pelo menos 6 caracteres.");
-        }
-
-        // Valida o campo endereço
         const endereco = document.getElementById("endereco");
-        if (endereco.value.trim().length < 3) {
-          isValid = false;
-          showError(endereco, "O endereço deve ter pelo menos 3 caracteres.");
-        }
-
-        // Valida o campo email
         const email = document.getElementById("email");
-        if (!email.value.includes("@") || !email.value.includes(".")) {
-          isValid = false;
-          showError(email, "Insira um email válido.");
-        }
-
-        // Valida o campo telefone
         const telefone = document.getElementById("telefone");
-        if (telefone.value.trim().length !== 14) {
-          isValid = false;
-          showError(telefone, "Insira o telefone no formato adequado (14 caracteres).");
-        }
-
-        // Valida o campo CPF
         const cpf = document.getElementById("cpf");
-        if (cpf.value.trim().length !== 14) {
-          isValid = false;
-          showError(cpf, "Insira o CPF no formato adequado (14 caracteres).");
+    
+        // Limpar mensagens de erro anteriores
+        document.getElementById("nomeError").textContent = "";
+        document.getElementById("enderecoError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("telefoneError").textContent = "";
+        document.getElementById("cpfError").textContent = "";
+    
+        // Validação de Nome
+        if (nome.value.trim() == "") {
+            document.getElementById("nomeError").textContent = "Nome é obrigatório!";
+            valid = false;
         }
-
-        // Impede o envio do formulário se inválido
-        if (!isValid) {
-          event.preventDefault();
+    
+        // Validação de Endereço
+        if (endereco.value.trim() == "") {
+            document.getElementById("enderecoError").textContent = "Endereço é obrigatório!";
+            valid = false;
         }
-      });
-
-      // Função para exibir mensagem de erro
-      function showError(input, message) {
-        const error = document.createElement("span");
-        error.className = "error";
-        error.style.color = "red";
-        error.textContent = message;
-        input.insertAdjacentElement("afterend", error);
-      }
+    
+        // Validação de Email
+        if (email.value.trim() == "") {
+            document.getElementById("emailError").textContent = "Email é obrigatório!";
+            valid = false;
+        }
+    
+        // Validação de Telefone (mínimo 14 caracteres)
+        if (telefone.value.trim() == "") {
+            document.getElementById("telefoneError").textContent = "Telefone é obrigatório!";
+            valid = false;
+        } else if (telefone.value.replace(/\D/g, "").length < 14) {
+            document.getElementById("telefoneError").textContent = "Telefone precisa ter 14 números.";
+            valid = false;
+        }
+    
+        // Validação de CPF (mínimo 14 caracteres)
+        if (cpf.value.trim() == "") {
+            document.getElementById("cpfError").textContent = "CPF é obrigatório!";
+            valid = false;
+        } else if (cpf.value.replace(/\D/g, "").length < 14) {
+            document.getElementById("cpfError").textContent = "CPF precisa ter 14 números.";
+            valid = false;
+        }
+    
+        return valid; // Retorna false para evitar o envio se houver erro
+    }
+    
+    // Impede letras nos campos telefone e CPF
+    document.addEventListener("DOMContentLoaded", function () {
+        const telefone = document.getElementById("telefone");
+        const cpf = document.getElementById("cpf");
+    
+        telefone.addEventListener("input", function () {
+            telefone.value = telefone.value.replace(/[^0-9()-]/g, ""); // Permite apenas números, parênteses e traço
+        });
+    
+        cpf.addEventListener("input", function () {
+            cpf.value = cpf.value.replace(/[^0-9.-]/g, ""); // Permite apenas números, ponto e traço
+        });
     });
-  </script>
+    </script>
+    
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
