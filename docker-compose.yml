@@ -16,7 +16,7 @@ services:
       - ./banco/dbtadw.sql:/docker-entrypoint-initdb.d/dbtadw.sql
     environment:
       - MARIADB_USER=root
-      - MARIADB_ROOT_PASSWORD=321
+      - MARIADB_ROOT_PASSWORD=123
   adminer:
     image: adminer:4.8.1
     container_name: "adminer-tadw"

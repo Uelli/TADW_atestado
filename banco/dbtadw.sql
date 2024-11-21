@@ -19,9 +19,9 @@ CREATE SCHEMA IF NOT EXISTS `dbtadw` ;
 USE `dbtadw` ;
 
 -- -----------------------------------------------------
--- Table `dbtadw`.`tb_cliente`
+-- Table `dbtadw`.`tb_pessoa`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dbtadw`.`tb_cliente` ;
+DROP TABLE IF EXISTS `dbtadw`.`tb_pessoa` ;
 
 CREATE TABLE IF NOT EXISTS `dbtadw`.`tb_pessoa` (
   `id_pessoa` INT NOT NULL AUTO_INCREMENT,
