@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `dbtadw`.`tb_pessoa` ;
 CREATE TABLE IF NOT EXISTS `dbtadw`.`tb_pessoa` (
   `id_pessoa` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
-  `endereco` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `telefone` VARCHAR(14) NOT NULL,
   `cpf` VARCHAR(14) NOT NULL,
