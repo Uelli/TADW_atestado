@@ -49,76 +49,77 @@
 
   <script>
     function validarFormulario() {
-        let valid = true;
-    
-        // Pegando os elementos do formulário
-        const nome = document.getElementById("nome");
-        const endereco = document.getElementById("endereco");
-        const email = document.getElementById("email");
-        const telefone = document.getElementById("telefone");
-        const cpf = document.getElementById("cpf");
-    
-        // Limpar mensagens de erro anteriores
-        document.getElementById("nomeError").textContent = "";
-        document.getElementById("enderecoError").textContent = "";
-        document.getElementById("emailError").textContent = "";
-        document.getElementById("telefoneError").textContent = "";
-        document.getElementById("cpfError").textContent = "";
-    
-        // Validação de Nome
-        if (nome.value.trim() == "") {
-            document.getElementById("nomeError").textContent = "Nome é obrigatório!";
-            valid = false;
-        }
-    
-        // Validação de Endereço
-        if (endereco.value.trim() == "") {
-            document.getElementById("enderecoError").textContent = "Endereço é obrigatório!";
-            valid = false;
-        }
-    
-        // Validação de Email
-        if (email.value.trim() == "") {
-            document.getElementById("emailError").textContent = "Email é obrigatório!";
-            valid = false;
-        }
-    
-        // Validação de Telefone (mínimo 14 caracteres)
-        if (telefone.value.trim() == "") {
-            document.getElementById("telefoneError").textContent = "Telefone é obrigatório!";
-            valid = false;
-        } else if (telefone.value.replace(/\D/g, "").length < 14) {
-            document.getElementById("telefoneError").textContent = "Telefone precisa ter 14 números.";
-            valid = false;
-        }
-    
-        // Validação de CPF (mínimo 14 caracteres)
-        if (cpf.value.trim() == "") {
-            document.getElementById("cpfError").textContent = "CPF é obrigatório!";
-            valid = false;
-        } else if (cpf.value.replace(/\D/g, "").length < 14) {
-            document.getElementById("cpfError").textContent = "CPF precisa ter 14 números.";
-            valid = false;
-        }
-    
-        return valid; // Retorna false para evitar o envio se houver erro
+      let valid = true;
+
+
+      const nome = document.getElementById("nome");
+      const endereco = document.getElementById("endereco");
+      const email = document.getElementById("email");
+      const telefone = document.getElementById("telefone");
+      const cpf = document.getElementById("cpf");
+
+
+      document.getElementById("nomeError").textContent = "";
+      document.getElementById("enderecoError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("telefoneError").textContent = "";
+      document.getElementById("cpfError").textContent = "";
+
+
+      if (nome.value.trim() == "") {
+        document.getElementById("nomeError").textContent = "Nome é obrigatório";
+        valid = false;
+      }
+
+
+      if (endereco.value.trim() == "") {
+        document.getElementById("enderecoError").textContent = "Endereço é obrigatório";
+        valid = false;
+      }
+
+
+      if (email.value.trim() == "") {
+        document.getElementById("emailError").textContent = "Email é obrigatório";
+        valid = false;
+      }
+
+
+      if (telefone.value.trim() == "") {
+        document.getElementById("telefoneError").textContent = "Telefone é obrigatório";
+        valid = false;
+      } else if (telefone.value.replace(/\D/g, "").length < 14) {
+        document.getElementById("telefoneError").textContent = "Telefone precisa ter 14 números.";
+        valid = false;
+      }
+
+      if (cpf.value.trim() == "") {
+        document.getElementById("cpfError").textContent = "CPF é obrigatório";
+        valid = false;
+      } else if (cpf.value.replace(/\D/g, "").length < 14) {
+        document.getElementById("cpfError").textContent = "CPF precisa ter 14 números.";
+        valid = false;
+      }
+
+      
+      return valid;
+      alert("Cadastro feito com sucesso!")
     }
+
     
-    // Impede letras nos campos telefone e CPF
     document.addEventListener("DOMContentLoaded", function () {
-        const telefone = document.getElementById("telefone");
-        const cpf = document.getElementById("cpf");
-    
-        telefone.addEventListener("input", function () {
-            telefone.value = telefone.value.replace(/[^0-9()-]/g, ""); // Permite apenas números, parênteses e traço
-        });
-    
-        cpf.addEventListener("input", function () {
-            cpf.value = cpf.value.replace(/[^0-9.-]/g, ""); // Permite apenas números, ponto e traço
-        });
+      const telefone = document.getElementById("telefone");
+      const cpf = document.getElementById("cpf");
+
+      telefone.addEventListener("input", function () {
+        telefone.value = telefone.value.replace(/[^0-9()-]/g, ""); 
+      });
+
+      cpf.addEventListener("input", function () {
+        cpf.value = cpf.value.replace(/[^0-9.-]/g, ""); 
+      });
     });
-    </script>
-    
+  </script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

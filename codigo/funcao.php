@@ -16,4 +16,3 @@ function salvarCadastro($conexao, $nome, $endereco, $email, $telefone, $cpf)
     }
 }
 ?>
-
