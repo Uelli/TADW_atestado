@@ -38,13 +38,13 @@
 
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" class="form-control" maxlength="14" />
+            <input type="text" id="telefone" name="telefone" class="form-control" maxlength="11" />
             <span id="telefoneError" class="text-danger"></span> 
           </div>
 
           <div class="mb-3">
             <label for="cpf" class="form-label">CPF:</label>
-            <input type="text" id="cpf" name="cpf" class="form-control" maxlength="14" />
+            <input type="text" id="cpf" name="cpf" class="form-control" maxlength="11" />
             <span id="cpfError" class="text-danger"></span> 
           </div>
           <!-- Botão de envio do formulário -->
@@ -97,7 +97,7 @@
       if (telefone.value.trim() == "") {
         document.getElementById("telefoneError").textContent = "Telefone é obrigatório";
         valid = false;
-      } else if (telefone.value.replace(/\D/g, "").length < 11) {
+      } else if (telefone.value.replace(/\D/g, "").length != 11) {
         document.getElementById("telefoneError").textContent = "Telefone precisa ter 11 números.";
         valid = false;
       }
@@ -106,7 +106,7 @@
       if (cpf.value.trim() == "") {
         document.getElementById("cpfError").textContent = "CPF é obrigatório";
         valid = false;
-      } else if (cpf.value.replace(/\D/g, "").length < 11) {
+      } else if (cpf.value.replace(/\D/g, "").length != 11) {
         document.getElementById("cpfError").textContent = "CPF precisa ter 11 números.";
         valid = false;
       }
