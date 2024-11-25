@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `dbtadw`.`tb_pessoa` (
   `nome` VARCHAR(100) NOT NULL,
   `endereco` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
-  `telefone` VARCHAR(14) NOT NULL,
-  `cpf` VARCHAR(14) NOT NULL,
+  `telefone` VARCHAR(11) NOT NULL,
+  `cpf` VARCHAR(11) NOT NULL,
   PRIMARY KEY (`id_pessoa`))
 ENGINE = InnoDB;
 
