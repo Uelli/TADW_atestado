@@ -97,8 +97,8 @@
       if (telefone.value.trim() == "") {
         document.getElementById("telefoneError").textContent = "Telefone é obrigatório";
         valid = false;
-      } else if (telefone.value.replace(/\D/g, "").length < 14) {
-        document.getElementById("telefoneError").textContent = "Telefone precisa ter 14 números.";
+      } else if (telefone.value.replace(/\D/g, "").length < 11) {
+        document.getElementById("telefoneError").textContent = "Telefone precisa ter 11 números.";
         valid = false;
       }
 
@@ -106,8 +106,8 @@
       if (cpf.value.trim() == "") {
         document.getElementById("cpfError").textContent = "CPF é obrigatório";
         valid = false;
-      } else if (cpf.value.replace(/\D/g, "").length < 14) {
-        document.getElementById("cpfError").textContent = "CPF precisa ter 14 números.";
+      } else if (cpf.value.replace(/\D/g, "").length < 11) {
+        document.getElementById("cpfError").textContent = "CPF precisa ter 11 números.";
         valid = false;
       }
 
